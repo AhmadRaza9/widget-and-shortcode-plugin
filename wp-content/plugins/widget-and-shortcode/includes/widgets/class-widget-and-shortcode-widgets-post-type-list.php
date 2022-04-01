@@ -131,14 +131,18 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
        <?php $loop->the_post();?>
 
       <div class="ws-card">
+          <?php if (has_post_thumbnail()): ?>
         <div class="ws-card-img">
             <?php the_post_thumbnail(sprintf('<img src="%s"', '>'));?>
         </div>
+        <?php endif?>
         <div class="ws-card-content">
-
           <h3><?php the_title(sprintf('<a href="%s" >', esc_url(get_permalink())), '</a>');?></h3>
+
           <?php apply_filters('control_post_type_content', __(the_excerpt()));?>
+
           <a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"><?php echo $post_type_readmore_button; ?></a>
+
         </div>
       </div>
 

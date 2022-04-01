@@ -26,12 +26,19 @@
   padding-top: 10px;
 }
 
+.ws-card-content a.ws-buttom {
+  font-size: 13px;
+  font-weight: 500;
+}
+
 a.ws-buttom:hover {
   text-decoration: underline;
 }
 
-.compact .ws-card-content p {
-  display: none;
+.compact .ws-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 15px;
 }
 
 .compact .ws-card-content h3 {
@@ -39,7 +46,6 @@ a.ws-buttom:hover {
   margin-bottom: 0px;
 }
 
-.compact .ws-card-content a.ws-buttom {
-  font-size: 13px;
-  font-weight: 500;
+.compact .ws-card-content p {
+  display: none;
 }
