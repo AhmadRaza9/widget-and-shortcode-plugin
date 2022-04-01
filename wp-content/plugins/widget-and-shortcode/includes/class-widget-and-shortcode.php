@@ -81,6 +81,7 @@ class Widget_And_Shortcode
         $this->define_admin_hooks();
         $this->define_public_hooks();
         $this->define_widget_hooks();
+        $this->define_shortcodes_hooks();
 
         // $this->archive_template_for_post_type();
 
@@ -132,6 +133,11 @@ class Widget_And_Shortcode
          * The class responsible for defining all Widgets related functionality
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-widget-and-shortcode-widgets.php';
+
+        /**
+         * The class responsible for defining all shortcodes related functionality
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-widget-and-shortcode-shortcodes.php';
 
         /**
          * All Helper Functions
@@ -272,6 +278,21 @@ class Widget_And_Shortcode
         );
 
         $this->loader->add_action('widgets_init', $plugin_widgets, 'register_widgets');
+
+    }
+
+    /**
+     * Defining all Shortcode for the plugin
+     */
+    public function define_shortcodes_hooks()
+    {
+
+        $plugin_shortcodes = new Widget_and_Shortcode_ws_Shortcodes(
+            $this->get_plugin_name(),
+            $this->get_version()
+        );
+
+        add_shortcode('ws_list', array($plugin_shortcodes, 'ws_list'));
 
     }
 
