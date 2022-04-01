@@ -82,6 +82,8 @@ class Widget_And_Shortcode
         $this->define_public_hooks();
         $this->define_widget_hooks();
 
+        // $this->archive_template_for_post_type();
+
     }
 
     /**
@@ -191,6 +193,21 @@ class Widget_And_Shortcode
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
+        /**
+         * the content template
+         */
+        // $this->loader->add_action('the_content', $plugin_public, 'the_content');
+
+        /**
+         * Single Post template
+         */
+        // $this->loader->add_filter('single_template', $plugin_public, 'single_template_blog');
+
+        /**
+         * Archive Post template
+         */
+        // $this->loader->add_filter('archive_template', $plugin_public, 'archive_template_blog');
+
     }
 
     /**
@@ -238,7 +255,7 @@ class Widget_And_Shortcode
     }
 
 /**
- * ocntrolling widgets functionality for our plugin
+ * controlling widgets functionality for our plugin
  */
 
     public function define_widget_hooks()
@@ -252,4 +269,5 @@ class Widget_And_Shortcode
         $this->loader->add_action('widgets_init', $plugin_widgets, 'register_widgets');
 
     }
+
 }
