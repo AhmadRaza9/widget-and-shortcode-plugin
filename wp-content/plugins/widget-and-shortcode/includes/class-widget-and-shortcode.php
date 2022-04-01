@@ -80,6 +80,7 @@ class Widget_And_Shortcode
         $this->set_locale();
         $this->define_admin_hooks();
         $this->define_public_hooks();
+        $this->define_widget_hooks();
 
     }
 
@@ -124,6 +125,11 @@ class Widget_And_Shortcode
          * side of the site.
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-widget-and-shortcode-public.php';
+
+        /**
+         * The class responsible for defining all Widgets related functionality
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-widget-and-shortcode-widgets.php';
 
         $this->loader = new Widget_And_Shortcode_Loader();
 
@@ -231,4 +237,19 @@ class Widget_And_Shortcode
         return $this->version;
     }
 
+/**
+ * ocntrolling widgets functionality for our plugin
+ */
+
+    public function define_widget_hooks()
+    {
+
+        $plugin_widgets = new Widget_And_Shortcode_Widgets(
+            $this->get_plugin_name(),
+            $this->get_version()
+        );
+
+        $this->loader->add_action('widgets_init', $plugin_widgets, 'register_widgets');
+
+    }
 }
