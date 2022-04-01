@@ -1,0 +1,1 @@
+D:/Installations/laragon/www/recent-cpt/wp-content/plugins/query-monitor/wp-content/db.php
