@@ -63,7 +63,7 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
             $post_type_bgColor = get_option('ws_color_of_cards') ?? '#D9F1FC';
             $post_type_style = get_option('ws_radio_button_input') ?? 'normal';
             $post_type_readmore_button = get_option('ws_read_more_of_post_types') ?? 'Find out more';
-            $this->show_post_types_frontend($show_post_type_number, $post_type, );
+            $this->show_post_types_frontend($show_post_type_number, $post_type, $post_type_readmore_button);
             echo $args['after_title'];
             echo $args['after_widget'];
 
@@ -110,7 +110,7 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
         /**
          * Show Post Types
          */
-        public function show_post_types_frontend($show_post_type_number, $post_type)
+        public function show_post_types_frontend($show_post_type_number, $post_type, $post_type_readmore_button)
         {
             $args = array(
                 'post_type' => $post_type,
@@ -124,13 +124,15 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
   <?php while ($loop->have_posts()): ?>
        <?php $loop->the_post();?>
 
-      <div class="card">
-        <div class="card-img"></div>
-        <div class="card-content">
+      <div class="ws-card">
+        <div class="ws-card-img">
+            <?php the_post_thumbnail(sprintf('<img src="%s"', '>'));?>
+        </div>
+        <div class="ws-card-content">
 
-          <h4><?php the_title(sprintf('<a class="blog-entry-title"><a href="%s" rel="blogmark">', esc_url(get_permalink())), '</a>');?></h4>
-          <p>some dummy description</p>
-          <button>Find our more</button>
+          <h3><?php the_title(sprintf('<a href="%s" >', esc_url(get_permalink())), '</a>');?></h3>
+          <p class="ws-description"><?php the_excerpt();?></p>
+          <a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"><?php echo $post_type_readmore_button; ?></a>
         </div>
       </div>
 

@@ -165,7 +165,6 @@ class Widget_And_Shortcode_Admin
         foreach ($post_types as $post_type_obj):
             $labels = get_post_type_labels($post_type_obj);
             array_push($all_post_type, $labels->singular_name);
-            // var_dump($labels);
         endforeach;
         foreach ($all_post_type as $val) {
             $assocs_all_post_type[$val] = $val;
