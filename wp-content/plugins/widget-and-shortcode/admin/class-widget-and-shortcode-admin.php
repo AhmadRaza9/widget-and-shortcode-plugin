@@ -10,6 +10,8 @@
  * @subpackage Widget_And_Shortcode/admin
  */
 
+use function PHPSTORM_META\type;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -148,6 +150,24 @@ class Widget_And_Shortcode_Admin
     }
 
     /**
+     * Get All Post types
+     */
+    public function get_all_post_types()
+    {
+        $all_post_type = [];
+        $args = array(
+            'public' => true,
+        );
+        $post_types = get_post_types($args, 'objects');
+
+        foreach ($post_types as $post_type_obj):
+            $labels = get_post_type_labels($post_type_obj);
+            array_push($all_post_type, $labels->name);
+        endforeach;
+        return $all_post_type;
+    }
+
+    /**
      * To add Plugin Menu and Settings Page
      */
 
@@ -184,19 +204,10 @@ class Widget_And_Shortcode_Admin
                 // fields for General Section
                 'ws_general_section' => array(
                     array(
-                        'id' => 'test_field',
-                        'label' => __('Test Field', 'widget-and-shortcode'),
-                    ),
-                    array(
-                        'id' => 'archive_column',
-                        'label' => __('Archive Column', 'widget-and-shortcode'),
+                        'id' => 'whole_post_types',
+                        'label' => __('Post Types', 'widget-and-shortcode'),
                         'type' => 'select',
-                        'options' => array(
-                            'column-two' => __('Two Columns', 'widget-and-shortcode'),
-                            'column-three' => __('Three Columns', 'widget-and-shortcode'),
-                            'column-four' => __('Four Columns', 'widget-and-shortcode'),
-                            'column-five' => __('Five Columns', 'widget-and-shortcode'),
-                        ),
+                        'options' => $this->get_all_post_types(),
                     ),
                 ),
             ),
@@ -210,4 +221,5 @@ class Widget_And_Shortcode_Admin
         new Boo_Settings_Helper($widget_and_shortcode_settings);
 
     }
+
 }
