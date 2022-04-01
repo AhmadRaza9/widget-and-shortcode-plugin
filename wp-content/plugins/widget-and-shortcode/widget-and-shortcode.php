@@ -35,7 +35,23 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WIDGET_AND_SHORTCODE_VERSION', '1.0.0');
+
+defined('WIDGET_AND_SHORTCODE_VERSION') or define('WIDGET_AND_SHORTCODE_VERSION', '1.0.0');
+
+defined('WIDGET_AND_SHORTCODE_NAME') or define('WIDGET_AND_SHORTCODE_NAME', 'widget-and-shortcode');
+
+/**
+ * plugin base file
+ */
+defined('WIDGET_AND_SHORTCODE_BASE_FILE') or define('WIDGET_AND_SHORTCODE_BASE_FILE', __FILE__);
+
+/**
+ * Plugin Directly Path.
+ * Plugin base dir path.
+ * user to locate plugin resources primarily code files
+ * start at version 1.0.0
+ */
+defined('WIDGET_AND_SHORTCODE_BASE_DIR') or define('WIDGET_AND_SHORTCODE_BASE_DIR', plugin_dir_path(__FILE__));
 
 /**
  * The code that runs during plugin activation.
