@@ -155,6 +155,8 @@ class Widget_And_Shortcode_Admin
     public function get_all_post_types()
     {
         $all_post_type = [];
+        $assocs_all_post_type = array();
+
         $args = array(
             'public' => true,
         );
@@ -162,9 +164,13 @@ class Widget_And_Shortcode_Admin
 
         foreach ($post_types as $post_type_obj):
             $labels = get_post_type_labels($post_type_obj);
-            array_push($all_post_type, $labels->name);
+            array_push($all_post_type, $labels->singular_name);
+            // var_dump($labels);
         endforeach;
-        return $all_post_type;
+        foreach ($all_post_type as $val) {
+            $assocs_all_post_type[$val] = $val;
+        }
+        return $assocs_all_post_type;
     }
 
     /**
@@ -232,8 +238,8 @@ class Widget_And_Shortcode_Admin
                         'label' => __('Style For Selected Post Type', 'widget-and-shortcode'),
                         'type' => 'radio',
                         'options' => array(
-                            'Radio 1' => 'Normal',
-                            'Radio 2' => 'Compact',
+                            'normal' => 'Normal',
+                            'compact' => 'Compact',
                         ),
                         'desc' => 'Compact: Image left and content right (default), Normal: Image top content bottom.',
                     ),
