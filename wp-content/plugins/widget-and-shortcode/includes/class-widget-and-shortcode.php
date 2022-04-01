@@ -133,6 +133,11 @@ class Widget_And_Shortcode
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-widget-and-shortcode-widgets.php';
 
+        /**
+         * All Helper Functions
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/helper-functions.php';
+
         $this->loader = new Widget_And_Shortcode_Loader();
 
     }

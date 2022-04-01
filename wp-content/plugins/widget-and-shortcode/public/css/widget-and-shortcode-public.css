@@ -2,3 +2,44 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.normal,
+.compact {
+  margin-top: 20px;
+}
+
+.ws-card-content {
+  padding: 15px;
+}
+
+.ws-card-content a.more-link {
+  line-height: 3;
+  text-decoration: underline;
+}
+
+.ws-card .ws-card-content p {
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.ws-card-content h3 {
+  padding-top: 10px;
+}
+
+a.ws-buttom:hover {
+  text-decoration: underline;
+}
+
+.compact .ws-card-content p {
+  display: none;
+}
+
+.compact .ws-card-content h3 {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+.compact .ws-card-content a.ws-buttom {
+  font-size: 13px;
+  font-weight: 500;
+}

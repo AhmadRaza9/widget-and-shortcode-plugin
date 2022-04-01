@@ -158,10 +158,12 @@ class Widget_And_Shortcode_Admin
         $assocs_all_post_type = array();
 
         $args = array(
-            'public' => true,
-        );
-        $post_types = get_post_types($args, 'objects');
 
+            'public' => true,
+
+        );
+        $post_types = get_post_types($args, false);
+        unset($post_types['attachment']);
         foreach ($post_types as $post_type_obj):
             $labels = get_post_type_labels($post_type_obj);
             array_push($all_post_type, $labels->singular_name);
