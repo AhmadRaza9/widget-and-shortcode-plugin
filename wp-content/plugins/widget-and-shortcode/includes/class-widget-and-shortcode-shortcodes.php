@@ -127,7 +127,7 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
             ?>
 
 
-<div class="cpt-shortcodes cpt-cards " id="cpt-main-sec">
+<div class="ws-shortcodes ws-cards " id="ws-main-sec">
             <?php
 
             while ($loop->have_posts()):
