@@ -125,6 +125,9 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
 
             $loop = new WP_Query($args);
             ?>
+
+<?php apply_filters('before_widget', 'widget_and_shortcode_before_widget_container');?>
+
 <div class="<?php echo $post_type_style; ?>" style="background-color: <?php echo $post_type_bgColor; ?>;">
 <?php if ($loop->have_posts()): ?>
   <?php while ($loop->have_posts()): ?>
@@ -137,7 +140,7 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
         </div>
         <?php endif?>
         <div class="ws-card-content">
-          <h3><?php the_title(sprintf('<a href="%s" >', esc_url(get_permalink())), '</a>');?></h3>
+          <h3><?php apply_filters('ws_customm_title', __(the_title(sprintf('<a href="%s" >', esc_url(get_permalink())), '</a>')));?></h3>
 
        <?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
 
@@ -147,10 +150,12 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
       </div>
 
 
+
+
     <?php endwhile;?>
 <?php endif;?>
 </div>
-
+<?php apply_filters('after_widget', 'widget_and_shortcode_after_widget_container');?>
 <?php
 
         }

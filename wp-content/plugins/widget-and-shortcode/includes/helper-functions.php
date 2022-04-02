@@ -58,3 +58,6 @@ function show_post_type_readmore_option()
 
 // add_filter('before_article_title', 'widget_and_shortcode_before_title');
 // add_filter('after_article_title', 'widget_and_shortcode_after_title');
+
+// add_filter('before_widget', 'widget_and_shortcode_before_widget_container');
+// add_filter('after_widget', 'widget_and_shortcode_after_widget_container');
