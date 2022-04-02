@@ -128,12 +128,12 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
 
 <?php apply_filters('before_widget', 'widget_and_shortcode_before_widget_container');?>
 
-<div class="<?php echo $post_type_style; ?>" style="background-color: <?php echo $post_type_bgColor; ?>;">
+<div class="<?php echo $post_type_style; ?>" >
 <?php if ($loop->have_posts()): ?>
   <?php while ($loop->have_posts()): ?>
        <?php $loop->the_post();?>
 
-      <div class="ws-card">
+      <div class="ws-card" style="background-color: <?php echo $post_type_bgColor; ?>;">
           <?php if (has_post_thumbnail()): ?>
         <div class="ws-card-img">
             <?php the_post_thumbnail(sprintf('<img src="%s"', '>'));?>

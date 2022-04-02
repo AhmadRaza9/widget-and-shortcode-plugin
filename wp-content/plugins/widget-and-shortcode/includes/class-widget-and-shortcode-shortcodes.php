@@ -134,9 +134,12 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
                 $loop->the_post();
 
                 // $template_loader->get_template_part('archive/content', 'book');
-
-                include WIDGET_AND_SHORTCODE_BASE_DIR . 'templates/archive/ws-content.php';
-                // End the loop.
+                ?>
+				<article id="ws-<?php the_ID();?>" <?php post_class('ws-cpt ws-card');?> style="background-color: <?php echo $atts['bgcolor']; ?>;" >
+							<?php include WIDGET_AND_SHORTCODE_BASE_DIR . 'templates/archive/ws-content.php';?>
+				</article>
+						    <?php
+    // End the loop.
             endwhile;
             // restore original post
             wp_reset_postdata();

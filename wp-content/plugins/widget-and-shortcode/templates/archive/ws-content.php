@@ -12,7 +12,7 @@
 $shortcode_post_type_readmore_button = show_post_type_readmore_option();
 ?>
 <?php apply_filters('before_article', 'widget_and_shortcode_before_article');?>
-<article id="ws-<?php the_ID();?>" <?php post_class('ws-cpt ws-card');?>>
+<!-- <article id="ws-<#?php the_ID();?>" <#?php post_class('ws-cpt ws-card');?>> -->
 <?php apply_filters('before_article_img', 'widget_and_shortcode_before_img');?>
 	<header class="ws-entry-header">
         <?php if (has_post_thumbnail()): ?>
@@ -47,6 +47,6 @@ $shortcode_post_type_readmore_button = show_post_type_readmore_option();
 <?php apply_filters('after_article_content', 'widget_and_shortcode_after_content');?>
 
 
-</article>
+<!-- </article> -->
 
 <?php apply_filters('after_article', 'widget_and_shortcode_after_article');
