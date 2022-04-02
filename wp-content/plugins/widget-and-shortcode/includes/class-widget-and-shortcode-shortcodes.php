@@ -100,6 +100,7 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
             $shortcode_post_type_style = show_post_type_style_option();
 
             $shortcode_number_of_post_type = show_post_type_number_option();
+            $post_type_readmore_button = show_post_type_readmore_option();
 
             $atts = shortcode_atts(
                 array(
@@ -135,10 +136,10 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
 
                 // $template_loader->get_template_part('archive/content', 'book');
                 ?>
-				<article id="ws-<?php the_ID();?>" <?php post_class('ws-cpt ws-card');?> style="background-color: <?php echo $atts['bgcolor']; ?>;" >
-							<?php include WIDGET_AND_SHORTCODE_BASE_DIR . 'templates/archive/ws-content.php';?>
-				</article>
-						    <?php
+								<article id="ws-<?php the_ID();?>" <?php post_class('ws-cpt ws-card');?> style="background-color: <?php echo $atts['bgcolor']; ?>;" >
+											<?php include WIDGET_AND_SHORTCODE_BASE_DIR . 'templates/archive/ws-content.php';?>
+								</article>
+										    <?php
     // End the loop.
             endwhile;
             // restore original post
