@@ -14,6 +14,7 @@
 
 .ws-card-content {
   padding: 15px;
+  grid-column: 2;
 }
 
 .ws-card-content a.more-link {
@@ -39,6 +40,16 @@ a.ws-buttom:hover {
   text-decoration: underline;
 }
 
+/* compact */
+
+.compact .ws-card-content {
+  padding: 0px 5px;
+}
+
+.compact .ws-card-content h3 {
+  padding-top: 0px;
+}
+
 .compact .ws-card {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -51,7 +62,7 @@ a.ws-buttom:hover {
 }
 
 .compact .ws-card-content p {
-  display: none;
+  font-size: 7px;
 }
 
 /* Widget Styling */
