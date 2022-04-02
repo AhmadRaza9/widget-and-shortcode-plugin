@@ -1,9 +1,7 @@
 <?php
 
-$meta = get_post_meta(get_the_ID());
-
-$category = get_the_category(get_the_ID());
-
+$category = get_the_category();
+// var_dump($category);
 ?>
 
 <ul>

@@ -34,7 +34,7 @@ $shortcode_post_type_readmore_button = show_post_type_readmore_option();
         <?php the_title(sprintf('<h3 class="ws-entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h3>');?>
 
         <div class="ws-entry-meta">
-        <?php require_once WIDGET_AND_SHORTCODE_BASE_DIR . 'templates/meta-ws.php';?>
+        <?php include WIDGET_AND_SHORTCODE_BASE_DIR . 'templates/meta-ws.php';?>
     </div>
 
         <?php apply_filters('after_article_title', 'widget_and_shortcode_after_title');?>
