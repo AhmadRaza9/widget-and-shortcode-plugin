@@ -87,7 +87,7 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
 
         /**
          * Shortcode for Books list
-         * Usage => [ws_list limit=3 style='compact' bgcolor='#ff0000' post_type='page'][/ws_list]
+         * Usage => [ws_list post_type='post' limit=1 bgcolor='#030303' style='compact' color='#ffffff'][/ws_list]
          */
 
         public function ws_list($atts, $content)
