@@ -58,15 +58,16 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
             $title = isset($instance['title']) ? $instance['title'] : '';
             echo $title . "<br/>";
 
-            $show_post_type_number = (get_option('ws_number_of_post_types') == '') ? 3 : get_option('ws_number_of_post_types');
 
-            $post_type = (get_option('ws_whole_post_types') == '') ? 'post' : get_option('ws_whole_post_types');
+            $post_type = show_post_type_option();
 
-            $post_type_bgColor = (get_option('ws_color_of_cards') == '') ? '#D9F1FC' : get_option('ws_color_of_cards');
+            $post_type_bgColor = show_post_type_bgColor_option();
 
-            $post_type_style = (get_option('ws_radio_button_input') == 'compact') ? get_option('ws_radio_button_input') : 'normal';
+            $post_type_style = show_post_type_style_option();
 
-            $post_type_readmore_button = (get_option('ws_read_more_of_post_types') == '') ? 'Find out more' : get_option('ws_read_more_of_post_types');
+            $post_type_readmore_button = show_post_type_readmore_option();
+
+            $show_post_type_number = show_post_type_number_option();
 
             $this->show_post_types_frontend($show_post_type_number, $post_type, $post_type_readmore_button, $post_type_bgColor, $post_type_style);
 
