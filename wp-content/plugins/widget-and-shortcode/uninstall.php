@@ -26,6 +26,26 @@
  */
 
 // If uninstall not called from WordPress, then exit.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-	exit;
+if (!defined('WP_UNINSTALL_PLUGIN')) {
+    exit;
+}
+
+$option_ids_to_delete = array(
+    0 => 'ws_advance_color_of_cards',
+    1 => 'ws_advance_number_of_post_types',
+    2 => 'ws_advance_read_more_of_post_types',
+    3 => 'ws_advance_select_layout',
+    4 => 'ws_advance_whole_post_types',
+    5 => 'ws_color_of_cards',
+    6 => 'ws_number_of_post_types',
+    7 => 'ws_radio_button_input',
+    8 => 'ws_read_more_of_post_types',
+    9 => 'ws_whole_post_types',
+
+);
+
+if (current_user_can('manage_options')) {
+    foreach ($option_ids_to_delete as $option_id) {
+        delete_option($optioin_id);
+    }
 }
