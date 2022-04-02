@@ -107,6 +107,7 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
                     'bgcolor' => $shortcode_post_type_bgColor,
                     'style' => $shortcode_post_type_style,
                     'post_type' => $shortcode_post_type,
+                    'color' => '',
                 ), // pairs
                 $atts, // atts
                 'ws_list', // shortcode
@@ -126,7 +127,7 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
             ?>
 
 
-<div class="ws-shortcodes ws-cards <?php echo $atts['style']; ?> " id="ws-main-sec" style="background-color: <?php echo $atts['bgcolor']; ?>;">
+<div class="ws-shortcodes ws-cards <?php echo $atts['style']; ?> " id="ws-main-sec" style="background-color: <?php echo $atts['bgcolor']; ?>; color:<?php echo $atts['color']; ?>">
             <?php
 // var_dump($shortcode_number_of_post_type);
             while ($loop->have_posts()):

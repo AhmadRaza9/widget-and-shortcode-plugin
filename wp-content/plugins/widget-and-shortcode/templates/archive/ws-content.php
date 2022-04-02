@@ -12,7 +12,7 @@
 $shortcode_post_type_readmore_button = show_post_type_readmore_option();
 ?>
 
-<article id="ws-<?php the_ID();?>" <?php post_class('ws-cpt');?>>
+<article id="ws-<?php the_ID();?>" <?php post_class('ws-cpt ws-card');?>>
 	<header class="ws-entry-header">
         <?php if (has_post_thumbnail()): ?>
             <div class="ws-entry-img">
