@@ -220,7 +220,8 @@ class Widget_And_Shortcode_Admin
                         'id' => 'number_of_post_types',
                         'label' => __('How Many Selected Posts To Show', 'widget-and-shortcode'),
                         'type' => 'number',
-                        'placeholder' => '3 is Default Value',
+                        // 'placeholder' => '3 is Default Value',
+                        'default' => 3,
                     ),
                     array(
                         'id' => 'color_of_cards',
