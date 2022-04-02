@@ -87,31 +87,33 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
 
         /**
          * Shortcode for Books list
-         * Usage => [ws_list limit=5 ]Between Shortcode [/ws_list]
+         * Usage => [ws_list limit=3 style='compact' bgcolor='#ff0000' post_type='page'][/ws_list]
          */
 
         public function ws_list($atts, $content)
         {
 
-            $shortcode_post_type = shortcode_post_type_option();
+            $shortcode_post_type = show_post_type_option();
 
-            $shortcode_post_type_bgColor = shortcode_post_type_bgColor_option();
+            $shortcode_post_type_bgColor = show_post_type_bgColor_option();
 
-            $shortcode_post_type_style = shortcode_post_type_style_option();
+            $shortcode_post_type_style = show_post_type_style_option();
 
-            $shortcode_number_of_post_type = shortcode_number_of_post_type();
+            $shortcode_number_of_post_type = show_post_type_number_option();
 
             $atts = shortcode_atts(
                 array(
                     'limit' => $shortcode_number_of_post_type,
                     'bgcolor' => $shortcode_post_type_bgColor,
+                    'style' => $shortcode_post_type_style,
+                    'post_type' => $shortcode_post_type,
                 ), // pairs
                 $atts, // atts
                 'ws_list', // shortcode
             );
 
             $loop_args = array(
-                'post_type' => $shortcode_post_type,
+                'post_type' => $atts['post_type'],
                 'posts_per_page' => $atts['limit'],
 
             );
@@ -124,7 +126,7 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
             ?>
 
 
-<div class="ws-shortcodes ws-cards <?php echo $shortcode_post_type_style; ?> " id="ws-main-sec" style="background-color: <?php echo $shortcode_post_type_bgColor; ?>;">
+<div class="ws-shortcodes ws-cards <?php echo $atts['style']; ?> " id="ws-main-sec" style="background-color: <?php echo $atts['bgcolor']; ?>;">
             <?php
 // var_dump($shortcode_number_of_post_type);
             while ($loop->have_posts()):

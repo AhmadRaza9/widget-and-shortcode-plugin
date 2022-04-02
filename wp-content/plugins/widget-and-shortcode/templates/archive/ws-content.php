@@ -9,7 +9,7 @@
 ?>
 
 <?php
-$shortcode_post_type_readmore_button = shortcode_post_type_readmore_option();
+$shortcode_post_type_readmore_button = show_post_type_readmore_option();
 ?>
 
 <article id="ws-<?php the_ID();?>" <?php post_class('ws-cpt');?>>

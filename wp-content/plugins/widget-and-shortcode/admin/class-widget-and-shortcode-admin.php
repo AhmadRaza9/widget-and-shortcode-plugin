@@ -184,7 +184,7 @@ class Widget_And_Shortcode_Admin
         require_once WIDGET_AND_SHORTCODE_BASE_DIR . 'vendor/boo-settings-helper/class-boo-settings-helper.php';
 
         $widget_and_shortcode_settings = array(
-            'tabs' => true,
+            // 'tabs' => true,
             'prefix' => 'ws_',
             'menu' => array(
 
@@ -204,12 +204,6 @@ class Widget_And_Shortcode_Admin
                     'id' => 'ws_general_section',
                     'title' => __('Widget Setting', 'widget-and-shortcode'),
                     'desc' => __('These are general settings', 'widget-and-shortcode'),
-                ),
-                // advance Seciton
-                array(
-                    'id' => 'ws_advance_section',
-                    'title' => __('Shortcode Setting', 'widget-and-shortcode'),
-                    'desc' => __('These are Advance settings', 'widget-and-shortcode'),
                 ),
 
             ),
@@ -252,42 +246,6 @@ class Widget_And_Shortcode_Admin
                     ),
                 ),
 
-                // fields for General Section
-                'ws_advance_section' => array(
-                    array(
-                        'id' => 'advance_whole_post_types',
-                        'label' => __('Post Types', 'widget-and-shortcode'),
-                        'type' => 'select',
-                        'options' => $this->get_all_post_types(),
-                    ),
-                    array(
-                        'id' => 'advance_number_of_post_types',
-                        'label' => __('How Many Selected Posts To Show', 'widget-and-shortcode'),
-                        'type' => 'number',
-                        'placeholder' => '3 is Default Value',
-                    ),
-                    array(
-                        'id' => 'advance_color_of_cards',
-                        'label' => __('Cards Background color', 'widget-and-shortcode'),
-                        'type' => 'color',
-                        'value' => "#D9F1FC",
-                    ),
-                    array(
-                        'id' => 'advance_read_more_of_post_types',
-                        'label' => __('Read More Button For Selected Post Type', 'widget-and-shortcode'),
-                        'type' => 'text',
-                        'value' => 'Find Out More',
-                    ),
-                    array(
-                        'id' => 'advance_select_layout',
-                        'label' => __('Style For Selected Post Type', 'widget-and-shortcode'),
-                        'type' => 'select',
-                        'options' => array(
-                            'style-one' => 'Normal',
-                            'style-two' => 'Compact',
-                        ),
-                    ),
-                ),
             ),
 
             'links' => array(
