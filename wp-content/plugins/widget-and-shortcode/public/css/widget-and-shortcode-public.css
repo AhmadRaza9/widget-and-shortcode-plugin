@@ -3,6 +3,10 @@
  * included in this file.
  */
 
+/* 
+  Widget Styling
+ */
+
 .normal,
 .compact {
   margin-top: 20px;
@@ -49,3 +53,34 @@ a.ws-buttom:hover {
 .compact .ws-card-content p {
   display: none;
 }
+
+/* Widget Styling */
+
+/* Shortcode Styling */
+
+.style-one .ws-cpt {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 20px;
+}
+
+.ws-entry-content {
+  padding: 5px 10px;
+}
+
+.style-one h3.ws-entry-title {
+  margin-bottom: 5px;
+}
+
+.ws-entry-content p {
+  margin-bottom: 20px;
+}
+
+.style-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  grid-column-gap: 20px;
+}
+
+/* Shortcode Styling */

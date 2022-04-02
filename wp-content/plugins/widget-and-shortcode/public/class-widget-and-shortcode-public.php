@@ -105,6 +105,16 @@ class Widget_And_Shortcode_Public
     }
 
     /**
+     * Load my css     */
+
+    // public function shortcode_public_css()
+    // {
+
+    //     wp_register_style('short_code_css', plugin_dir_url(__FILE__), 'css/widget-and-shortcode-Shortcode.css', array(), $this->version, 'all');
+    //     wp_enqueue_style('short_code_css');
+    // }
+
+    /**
      * Single Template
      */
 

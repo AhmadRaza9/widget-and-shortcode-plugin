@@ -87,38 +87,36 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
 
         /**
          * Shortcode for Books list
-         * Usage => [ws_list limit=5 column=3]Between Shortcode [/ws_list]
+         * Usage => [ws_list limit=5 ]Between Shortcode [/ws_list]
          */
 
         public function ws_list($atts, $content)
         {
 
+            $shortcode_post_type = shortcode_post_type_option();
+
+            $shortcode_post_type_bgColor = shortcode_post_type_bgColor_option();
+
+            $shortcode_post_type_style = shortcode_post_type_style_option();
+
+            $shortcode_number_of_post_type = shortcode_number_of_post_type();
+
             $atts = shortcode_atts(
                 array(
-                    'limit' => 3,
-                    'column' => 3,
-                    'bgcolor' => '#ff0000',
-                    'book_id' => '',
+                    'limit' => $shortcode_number_of_post_type,
+                    'bgcolor' => $shortcode_post_type_bgColor,
                 ), // pairs
                 $atts, // atts
                 'ws_list', // shortcode
             );
 
             $loop_args = array(
-                'post_type' => 'post',
-                'posts_per_page' => 3,
+                'post_type' => $shortcode_post_type,
+                'posts_per_page' => $atts['limit'],
 
             );
 
-            // if (!empty($atts['book_id'])) {
-            //     $loop_args['p'] = absint($atts['book_id']);
-            // }
-
             $loop = new WP_Query($loop_args);
-
-            // $grid_column = rbr_get_column_class($atts['column']);
-
-            // $template_loader = rbr_get_template_loader();
 
             // Step 1: Register a placeholder stylesheet
             // Step 2: Build up a css
@@ -127,9 +125,9 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
             ?>
 
 
-<div class="ws-shortcodes ws-cards " id="ws-main-sec">
+<div class="ws-shortcodes ws-cards <?php echo $shortcode_post_type_style; ?> " id="ws-main-sec" style="background-color: <?php echo $shortcode_post_type_bgColor; ?>;">
             <?php
-
+// var_dump($shortcode_number_of_post_type);
             while ($loop->have_posts()):
                 $loop->the_post();
 
