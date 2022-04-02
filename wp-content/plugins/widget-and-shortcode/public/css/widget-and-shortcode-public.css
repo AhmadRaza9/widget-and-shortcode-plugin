@@ -70,5 +70,20 @@ a.ws-buttom:hover {
 .ws-entry-content {
   padding: 10px 10px;
 }
+.compact .ws-entry-meta ul {
+  justify-content: flex-start;
+  display: block;
+}
+
+.ws-entry-meta ul {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.ws-entry-meta ul li {
+  margin-right: 10px;
+  margin-left: 30px;
+}
 
 /* Styling */

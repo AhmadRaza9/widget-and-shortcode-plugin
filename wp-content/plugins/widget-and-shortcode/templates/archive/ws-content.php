@@ -25,20 +25,25 @@ $shortcode_post_type_readmore_button = show_post_type_readmore_option();
     </header>
 <?php apply_filters('after_article_img', 'widget_and_shortcode_after_img');?>
 
+
 <?php apply_filters('before_article_content', 'widget_and_shortcode_before_content');?>
 <div class="ws-entry-content">
+
         <?php apply_filters('before_article_title', 'widget_and_shortcode_before_title');?>
 
         <?php the_title(sprintf('<h3 class="ws-entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h3>');?>
 
+        <div class="ws-entry-meta">
+        <?php require_once WIDGET_AND_SHORTCODE_BASE_DIR . 'templates/meta-ws.php';?>
+    </div>
+
         <?php apply_filters('after_article_title', 'widget_and_shortcode_after_title');?>
 
-<p>
-<?php echo apply_filters('ws_control_content', wp_trim_words(get_the_content(), 20)); ?>
-</p>
+        <p><?php echo apply_filters('ws_control_content', wp_trim_words(get_the_content(), 20)); ?></p>
+
 <a class="ws-button" href="<?php the_permalink(get_the_ID());?>"><?php echo $shortcode_post_type_readmore_button; ?></a>
 
-	</div><!-- .entry-content -->
+</div><!-- .entry-content -->
 <?php apply_filters('after_article_content', 'widget_and_shortcode_after_content');?>
 
 
