@@ -1,24 +1,18 @@
 <?php
-/**
- * Small Archive Blog Excerpt Length
- */
-function control_post_type_content()
+/* Small Archive Blog Excerpt Length */
+function ws_custom_excerpt_length()
 {
-    return 20;
+    return 10;
 }
+add_filter('excerpt_length', 'ws_custom_excerpt_length', 999);
 
-add_filter('excerpt_length', 'control_post_type_content', 20);
+// function ws_custom_content_length($content)
+// {
+//     return substr($content, 0, 300);
+// }
+// add_filter('the_content', 'ws_custom_content_length', 999);
 
-// add_action('wp_footer', function () {
-//     global $wp_post_types;
-//     echo "<pre style='background-color:#fff;'>";
-//     var_export($wp_post_types);
-//     echo "</pre>";
-// });
-
-/**
- * These are general settings functions
- */
+/* These are general settings functions */
 
 function show_post_type_number_option()
 {

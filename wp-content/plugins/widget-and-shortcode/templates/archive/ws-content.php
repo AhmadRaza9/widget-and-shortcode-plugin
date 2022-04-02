@@ -25,13 +25,10 @@ $shortcode_post_type_readmore_button = shortcode_post_type_readmore_option();
 
 	<div class="ws-entry-content">
         <?php the_title(sprintf('<h3 class="ws-entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h3>');?>
-<?php
-// include BLOG_POST_BASE_DIR . "templates/blog-meta.php";
-
-apply_filters('archive_ws_excerpt_length', __(the_excerpt()));
-
-?>
-<a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"><?php echo $shortcode_post_type_readmore_button; ?></a>
+<p>
+<?php echo apply_filters('ws_control_content', wp_trim_words(get_the_content(), 20)); ?>
+</p>
+<a class="ws-button" href="<?php the_permalink(get_the_ID());?>"><?php echo $shortcode_post_type_readmore_button; ?></a>
 
 	</div><!-- .entry-content -->
 

@@ -118,8 +118,7 @@ if (!class_exists('Widget_and_Shortcode_ws_Shortcodes')) {
 
             $loop = new WP_Query($loop_args);
 
-            // Step 1: Register a placeholder stylesheet
-            // Step 2: Build up a css
+            // Step 1: Register a placeholder
 
             ob_start();
             ?>
