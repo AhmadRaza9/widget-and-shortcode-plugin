@@ -233,8 +233,7 @@ class Widget_And_Shortcode_Admin
                         'id' => 'read_more_of_post_types',
                         'label' => __('Read More Button For Selected Post Type', 'widget-and-shortcode'),
                         'type' => 'text',
-
-                        'value' => 'Find Out More',
+                        'default' => 'Find Out More',
                     ),
                     array(
                         'id' => 'radio_button_input',
@@ -243,9 +242,8 @@ class Widget_And_Shortcode_Admin
                         'options' => array(
                             'normal' => 'Normal',
                             'compact' => 'Compact',
-                            'radio_2' => 'Radio 2',
                         ),
-                        // 'default' => 'radio_2',
+                        'default' => 'normal',
                     ),
                 ),
 

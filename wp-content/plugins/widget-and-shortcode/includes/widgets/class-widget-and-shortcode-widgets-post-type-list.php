@@ -118,44 +118,18 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
          */
         public function show_post_types_frontend($show_post_type_number, $post_type, $post_type_readmore_button, $post_type_bgColor, $post_type_style)
         {
-            $args = array(
-                'post_type' => $post_type,
-                'posts_per_page' => absint($show_post_type_number),
-            );
+            // $args = array(
+            //     'post_type' => $post_type,
+            //     'posts_per_page' => absint($show_post_type_number),
+            // );
 
-            $loop = new WP_Query($args);
+            // $loop = new WP_Query($args);
             ?>
 
-<?php apply_filters('before_widget', 'widget_and_shortcode_before_widget_container');?>
 
 <div class="<?php echo $post_type_style; ?>" >
-<?php if ($loop->have_posts()): ?>
-  <?php while ($loop->have_posts()): ?>
-       <?php $loop->the_post();?>
-
-      <div class="ws-card" style="background-color: <?php echo $post_type_bgColor; ?>;">
-          <?php if (has_post_thumbnail()): ?>
-        <div class="ws-card-img">
-            <?php the_post_thumbnail(sprintf('<img src="%s"', '>'));?>
-        </div>
-        <?php endif?>
-        <div class="ws-card-content">
-          <h3><?php apply_filters('ws_customm_title', __(the_title(sprintf('<a href="%s" >', esc_url(get_permalink())), '</a>')));?></h3>
-
-       <?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
-
-       <a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"><?php echo $post_type_readmore_button; ?></a>
-
-        </div>
-      </div>
-
-
-
-
-    <?php endwhile;?>
-<?php endif;?>
+<?php show_post_types();?>
 </div>
-<?php apply_filters('after_widget', 'widget_and_shortcode_after_widget_container');?>
 <?php
 
         }

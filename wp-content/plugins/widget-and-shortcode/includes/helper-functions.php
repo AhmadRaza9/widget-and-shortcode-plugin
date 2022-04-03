@@ -47,17 +47,43 @@ function show_post_type_readmore_option()
     return $post_type_readmore_button;
 }
 
-// add_filter('before_article', 'widget_and_shortcode_before_article');
-// add_filter('after_article', 'widget_and_shortcode_after_article');
+/**
+ *
+ * Loop function for shortcode and widget
+ *
+ */
 
-// add_filter('before_article_img', 'widget_and_shortcode_before_img');
-// add_filter('after_article_img', 'widget_and_shortcode_after_img');
+function show_post_types()
+{
+    $args = array(
+        'post_type' => show_post_type_option(),
+        'posts_per_page' => absint(show_post_type_number_option()),
+    );
 
-// add_filter('before_article_content', 'widget_and_shortcode_before_content');
-// add_filter('after_article_content', 'widget_and_shortcode_after_content');
+    $loop = new WP_Query($args);
 
-// add_filter('before_article_title', 'widget_and_shortcode_before_title');
-// add_filter('after_article_title', 'widget_and_shortcode_after_title');
+    if ($loop->have_posts()):
+        while ($loop->have_posts()):
+            $loop->the_post();
+            ?>
+		<div class="ws-card" style="background-color: <?php echo show_post_type_bgColor_option(); ?>;">
+		<?php if (has_post_thumbnail()): ?>
+		        <div class="ws-card-img">
+		        <?php the_post_thumbnail('small');?>
+		        </div>
+		        <?php endif;?>
+	<div class="ws-card-content">
+	<h3><a href="<?php the_permalink(get_the_ID());?>"> <?php the_title();?></a></h3>
 
-// add_filter('before_widget', 'widget_and_shortcode_before_widget_container');
-// add_filter('after_widget', 'widget_and_shortcode_after_widget_container');
+	<?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
+
+	<a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"> <?php echo show_post_type_readmore_option(); ?></a>
+
+	</div>
+	</div>
+
+							<?php
+
+    endwhile;
+    endif;
+}
