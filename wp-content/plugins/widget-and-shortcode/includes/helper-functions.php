@@ -47,33 +47,21 @@ function show_post_type_readmore_option()
     return $post_type_readmore_button;
 }
 
-/**
- *
- * Loop function for shortcode and widget
- *
- */
-
-$shortcode_post_type = show_post_type_option();
-
-$shortcode_post_type_bgColor = show_post_type_bgColor_option();
-
-$shortcode_post_type_style = show_post_type_style_option();
-
-$shortcode_number_of_post_type = show_post_type_number_option();
-
-$post_type_readmore_button = show_post_type_readmore_option();
+/** Loop function for shortcode and widget **/
 
 // $shortcode_post_type, $shortcode_post_type_bgColor, $shortcode_post_type_style, $shortcode_number_of_post_type, $post_type_readmore_button
+
+// [ws_list limit=2 bgcolor='#ff0000' style='compact' post_type='post' readmore='Read More'][/ws_list]
 
 function show_post_types($atts)
 {
     $atts = shortcode_atts(
         array(
-            'limit' => 1,
+            'limit' => '',
             'bgcolor' => '',
             'style' => '',
             'post_type' => '',
-            'color' => '',
+            'readmore' => '',
         ), // pairs
         $atts, // atts
         'ws_list', // shortcode
@@ -81,7 +69,7 @@ function show_post_types($atts)
 
     $args = array(
         'post_type' => empty($atts['post_type']) ? show_post_type_option() : $atts['post_type'],
-        'posts_per_page' => empty($atts['limit']) ? absint(show_post_type_number_option()) : $atts['limit'],
+        'posts_per_page' => empty($atts['limit']) ? show_post_type_number_option() : $atts['limit'],
     );
 
     $loop = new WP_Query($args);
@@ -90,21 +78,21 @@ function show_post_types($atts)
         while ($loop->have_posts()):
             $loop->the_post();
             ?>
-				            <div id="ws-main-sec" class="ws-shortcodes ws-cards <?php echo empty($atts['style']) ? show_post_type_style_option() : $atts['style']; ?>">
-							    <div class="ws-card" style="background-color:<?php echo empty($atts['bgcolor']) ? show_post_type_bgColor_option() : $atts['bgcolor']; ?>;">
-				                    <?php if (has_post_thumbnail()): ?>
-				                    <div class="ws-card-img">
-				                    <?php the_post_thumbnail('small');?>
-				                    </div>
-				                    <?php endif;?>
-		                    <div class="ws-card-content">
-		                    <h3><a href="<?php the_permalink(get_the_ID());?>"> <?php the_title();?></a></h3>
-		                    <?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
-		                    <a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"> <?php echo show_post_type_readmore_option(); ?></a>
-		                    </div>
-					    </div>
-		            </div>
-											<?php
+								<div id="ws-main-sec" class="ws-shortcodes ws-cards <?php echo empty($atts['style']) ? show_post_type_style_option() : $atts['style']; ?>">
+								<div class="ws-card" style="background-color:<?php echo empty($atts['bgcolor']) ? show_post_type_bgColor_option() : $atts['bgcolor']; ?>;">
+								<?php if (has_post_thumbnail()): ?>
+								<div class="ws-card-img">
+								<?php the_post_thumbnail('small');?>
+								</div>
+								<?php endif;?>
+				<div class="ws-card-content">
+				<h3><a href="<?php the_permalink(get_the_ID());?>"> <?php the_title();?></a></h3>
+				<?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
+				<a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"><?php echo empty($atts['readmore']) ? show_post_type_readmore_option() : $atts['readmore']; ?></a>
+				</div>
+				</div>
+				</div>
+				<?php
 
     endwhile;
     endif;

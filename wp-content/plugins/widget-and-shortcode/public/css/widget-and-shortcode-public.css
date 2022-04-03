@@ -26,7 +26,7 @@
 
 .ws-card .ws-card-content p {
   font-size: 12px;
-  margin-bottom: 0px;
+  margin-bottom: 7px;
 }
 
 .ws-card-content h3 {
@@ -38,6 +38,10 @@
   font-weight: 500;
 }
 
+.ws-card .more-link {
+  display: none;
+}
+
 a.ws-buttom:hover {
   text-decoration: underline;
 }
@@ -45,45 +49,17 @@ a.ws-buttom:hover {
 /* compact */
 
 .compact .ws-card-content {
-  padding: 0px 5px;
-}
-
-.compact .ws-card-content h3 {
-  padding-top: 0px;
+  padding: 10px 5px;
 }
 
 .compact .ws-card {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 2fr;
   margin-top: 15px;
-}
-
-.compact .ws-card-content h3 {
-  font-size: 14px;
-  margin-bottom: 0px;
-}
-
-.compact .ws-card-content p {
-  font-size: 7px;
 }
 
 .ws-entry-content {
   padding: 10px 10px;
-}
-.compact .ws-entry-meta ul {
-  justify-content: flex-start;
-  display: block;
-}
-
-.ws-entry-meta ul {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
-.ws-entry-meta ul li {
-  margin-right: 10px;
-  margin-left: 30px;
 }
 
 /* Styling */

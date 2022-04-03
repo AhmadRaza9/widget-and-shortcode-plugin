@@ -221,6 +221,7 @@ class Widget_And_Shortcode_Admin
                         'label' => __('How Many Selected Posts To Show', 'widget-and-shortcode'),
                         'type' => 'number',
                         'default' => 3,
+                        'desc' => 'please select at least 1',
                         // 'placeholder' => '3 is Default Value',
                     ),
                     array(
@@ -228,12 +229,14 @@ class Widget_And_Shortcode_Admin
                         'label' => __('Cards Background color', 'widget-and-shortcode'),
                         'type' => 'color',
                         'default' => '#D9F1FC',
+                        'desc' => 'Default background color is #D9F1FC',
                     ),
                     array(
                         'id' => 'read_more_of_post_types',
                         'label' => __('Read More Button For Selected Post Type', 'widget-and-shortcode'),
                         'type' => 'text',
                         'default' => 'Find Out More',
+                        'desc' => 'Default Button text is Find Out More',
                     ),
                     array(
                         'id' => 'radio_button_input',
@@ -244,6 +247,7 @@ class Widget_And_Shortcode_Admin
                             'compact' => 'Compact',
                         ),
                         'default' => 'normal',
+                        'desc' => 'Default Style is Normal',
                     ),
                 ),
 

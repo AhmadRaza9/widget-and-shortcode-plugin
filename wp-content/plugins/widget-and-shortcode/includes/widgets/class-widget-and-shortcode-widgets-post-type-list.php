@@ -58,9 +58,7 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
             $title = isset($instance['title']) ? $instance['title'] : '';
             echo $title . "<br/>";
 
-            $post_type_style = show_post_type_style_option();
-
-            $this->show_post_types_frontend($post_type_style);
+            $this->show_post_types_frontend();
 
             echo $args['after_title'];
             echo $args['after_widget'];
@@ -108,7 +106,7 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
         /**
          * Show Post Types
          */
-        public function show_post_types_frontend($post_type_style)
+        public function show_post_types_frontend()
         {
 
             ?>
