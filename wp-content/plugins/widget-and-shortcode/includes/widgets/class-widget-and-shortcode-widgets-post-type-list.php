@@ -56,6 +56,7 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
             echo $args['before_title'];
             // Title will be displayed here
             $title = isset($instance['title']) ? $instance['title'] : '';
+            $post_type = isset($instance['post_type']) ? $instance['post_type'] : '';
             echo $title . "<br/>";
 
             $this->show_post_types_frontend();
@@ -75,12 +76,22 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
             // outputs the options form on admin
 
             $title = isset($instance['title']) ? $instance['title'] : '';
+            $post_type = isset($instance['post_type']) ? $instance['post_type'] : '';
 
             ?>
 
             <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'widget-and-shortcode');?></label>
             <input type="text" class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo esc_html($title); ?>" >
+            </p>
+            <p>
+            <label for="<?php echo esc_attr($this->get_field_id('post_type')) ?>"><?php _e('Post Type :', 'widget-and-shortcode')?></label>
+            <select name="<?php echo esc_attr($this->get_field_id('post_type')) ?>" class="widefat" id="post_type">
+            <?php $all_post_types = get_all_post_types();?>
+            <?php foreach ($all_post_types as $single_post_type): ?>
+                <option value="<?php echo $single_post_type; ?>"><?php echo $single_post_type; ?></option>
+            <?php endforeach;?>
+            </select>
             </p>
 
             <?php
@@ -99,6 +110,7 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
         {
             // processes widget options to be saved
             $sanitized_instance['title'] = sanitize_text_field($new_instance['title']);
+            $sanitized_instance['post_type'] = sanitize_text_field($new_instance['post_type']);
 
             return $sanitized_instance;
         }

@@ -10,8 +10,6 @@
  * @subpackage Widget_And_Shortcode/admin
  */
 
-use function PHPSTORM_META\type;
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -150,31 +148,6 @@ class Widget_And_Shortcode_Admin
     }
 
     /**
-     * Get All Post types
-     */
-    public function get_all_post_types()
-    {
-        $all_post_type = [];
-        $assocs_all_post_type = array();
-
-        $args = array(
-
-            'public' => true,
-
-        );
-        $post_types = get_post_types($args, false);
-        unset($post_types['attachment']);
-        foreach ($post_types as $post_type_obj):
-            $labels = get_post_type_labels($post_type_obj);
-            array_push($all_post_type, $labels->singular_name);
-        endforeach;
-        foreach ($all_post_type as $val) {
-            $assocs_all_post_type[$val] = $val;
-        }
-        return $assocs_all_post_type;
-    }
-
-    /**
      * To add Plugin Menu and Settings Page
      */
 
@@ -214,7 +187,7 @@ class Widget_And_Shortcode_Admin
                         'id' => 'whole_post_types',
                         'label' => __('Post Types', 'widget-and-shortcode'),
                         'type' => 'select',
-                        'options' => $this->get_all_post_types(),
+                        'options' => get_all_post_types(),
                     ),
                     array(
                         'id' => 'number_of_post_types',

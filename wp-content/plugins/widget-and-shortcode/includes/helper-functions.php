@@ -78,22 +78,49 @@ function show_post_types($atts)
         while ($loop->have_posts()):
             $loop->the_post();
             ?>
-								<div id="ws-main-sec" class="ws-shortcodes ws-cards <?php echo empty($atts['style']) ? show_post_type_style_option() : $atts['style']; ?>">
-								<div class="ws-card" style="background-color:<?php echo empty($atts['bgcolor']) ? show_post_type_bgColor_option() : $atts['bgcolor']; ?>;">
-								<?php if (has_post_thumbnail()): ?>
-								<div class="ws-card-img">
-								<?php the_post_thumbnail('small');?>
-								</div>
-								<?php endif;?>
-				<div class="ws-card-content">
-				<h3><a href="<?php the_permalink(get_the_ID());?>"> <?php the_title();?></a></h3>
-				<?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
-				<a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"><?php echo empty($atts['readmore']) ? show_post_type_readmore_option() : $atts['readmore']; ?></a>
-				</div>
-				</div>
-				</div>
-				<?php
+												<div id="ws-main-sec" class="ws-shortcodes ws-cards <?php echo empty($atts['style']) ? show_post_type_style_option() : $atts['style']; ?>">
+												<div class="ws-card" style="background-color:<?php echo empty($atts['bgcolor']) ? show_post_type_bgColor_option() : $atts['bgcolor']; ?>;">
+												<?php if (has_post_thumbnail()): ?>
+												<div class="ws-card-img">
+												<?php the_post_thumbnail('small');?>
+												</div>
+												<?php endif;?>
+						<div class="ws-card-content">
+						<h3><a href="<?php the_permalink(get_the_ID());?>"> <?php the_title();?></a></h3>
+						<?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
+						<a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"><?php echo empty($atts['readmore']) ? show_post_type_readmore_option() : $atts['readmore']; ?></a>
+						</div>
+						</div>
+						</div>
+						<?php
 
     endwhile;
     endif;
+}
+
+/**
+ * Get All Post Types
+ */
+
+function get_all_post_types()
+{
+    $all_post_type = [];
+    $assocs_all_post_type = array();
+
+    $args = array(
+
+        'public' => true,
+
+    );
+    $post_types = get_post_types($args, false);
+    unset($post_types['attachment']);
+    foreach ($post_types as $post_type_obj):
+        $labels = get_post_type_labels($post_type_obj);
+        array_push($all_post_type, $labels->singular_name);
+    endforeach;
+    foreach ($all_post_type as $val) {
+        $assocs_all_post_type[$val] = $val;
+    }
+    return $assocs_all_post_type;
+
 }
