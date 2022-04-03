@@ -48,18 +48,6 @@ if (!class_exists('Widget_And_Shortcode_Widgets')) {
         {
             $this->plugin_name = $plugin_name;
             $this->version = $version;
-            $this->load_dependency();
-        }
-
-        /**
-         * Load Widget Class Deps
-         */
-
-        public function load_dependency()
-        {
-
-            require_once WIDGET_AND_SHORTCODE_BASE_DIR . "vendor/boo-widget-helper/class-boo-widget-helper.php";
-
         }
 
         /**

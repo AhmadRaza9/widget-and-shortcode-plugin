@@ -220,19 +220,20 @@ class Widget_And_Shortcode_Admin
                         'id' => 'number_of_post_types',
                         'label' => __('How Many Selected Posts To Show', 'widget-and-shortcode'),
                         'type' => 'number',
-                        // 'placeholder' => '3 is Default Value',
                         'default' => 3,
+                        // 'placeholder' => '3 is Default Value',
                     ),
                     array(
                         'id' => 'color_of_cards',
                         'label' => __('Cards Background color', 'widget-and-shortcode'),
                         'type' => 'color',
-                        'value' => "#D9F1FC",
+                        'default' => '#D9F1FC',
                     ),
                     array(
                         'id' => 'read_more_of_post_types',
                         'label' => __('Read More Button For Selected Post Type', 'widget-and-shortcode'),
                         'type' => 'text',
+
                         'value' => 'Find Out More',
                     ),
                     array(
@@ -242,8 +243,9 @@ class Widget_And_Shortcode_Admin
                         'options' => array(
                             'normal' => 'Normal',
                             'compact' => 'Compact',
+                            'radio_2' => 'Radio 2',
                         ),
-                        'desc' => 'Compact: Image left and content right (default), Normal: Image top content bottom.',
+                        // 'default' => 'radio_2',
                     ),
                 ),
 
