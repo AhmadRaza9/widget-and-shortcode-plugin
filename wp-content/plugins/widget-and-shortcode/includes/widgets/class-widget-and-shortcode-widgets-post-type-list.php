@@ -58,17 +58,9 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
             $title = isset($instance['title']) ? $instance['title'] : '';
             echo $title . "<br/>";
 
-            $post_type = show_post_type_option();
-
-            $post_type_bgColor = show_post_type_bgColor_option();
-
             $post_type_style = show_post_type_style_option();
 
-            $post_type_readmore_button = show_post_type_readmore_option();
-
-            $show_post_type_number = show_post_type_number_option();
-
-            $this->show_post_types_frontend($show_post_type_number, $post_type, $post_type_readmore_button, $post_type_bgColor, $post_type_style);
+            $this->show_post_types_frontend($post_type_style);
 
             echo $args['after_title'];
             echo $args['after_widget'];
@@ -116,20 +108,12 @@ if (!class_exists('Widget_And_Shortcode_Post_Type_List')) {
         /**
          * Show Post Types
          */
-        public function show_post_types_frontend($show_post_type_number, $post_type, $post_type_readmore_button, $post_type_bgColor, $post_type_style)
+        public function show_post_types_frontend($post_type_style)
         {
-            // $args = array(
-            //     'post_type' => $post_type,
-            //     'posts_per_page' => absint($show_post_type_number),
-            // );
 
-            // $loop = new WP_Query($args);
             ?>
 
-
-<div class="<?php echo $post_type_style; ?>" >
-<?php show_post_types();?>
-</div>
+<?php show_post_types($atts = '');?>
 <?php
 
         }

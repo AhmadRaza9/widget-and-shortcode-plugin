@@ -53,11 +53,35 @@ function show_post_type_readmore_option()
  *
  */
 
-function show_post_types()
+$shortcode_post_type = show_post_type_option();
+
+$shortcode_post_type_bgColor = show_post_type_bgColor_option();
+
+$shortcode_post_type_style = show_post_type_style_option();
+
+$shortcode_number_of_post_type = show_post_type_number_option();
+
+$post_type_readmore_button = show_post_type_readmore_option();
+
+// $shortcode_post_type, $shortcode_post_type_bgColor, $shortcode_post_type_style, $shortcode_number_of_post_type, $post_type_readmore_button
+
+function show_post_types($atts)
 {
+    $atts = shortcode_atts(
+        array(
+            'limit' => 1,
+            'bgcolor' => '',
+            'style' => '',
+            'post_type' => '',
+            'color' => '',
+        ), // pairs
+        $atts, // atts
+        'ws_list', // shortcode
+    );
+
     $args = array(
-        'post_type' => show_post_type_option(),
-        'posts_per_page' => absint(show_post_type_number_option()),
+        'post_type' => empty($atts['post_type']) ? show_post_type_option() : $atts['post_type'],
+        'posts_per_page' => empty($atts['limit']) ? absint(show_post_type_number_option()) : $atts['limit'],
     );
 
     $loop = new WP_Query($args);
@@ -66,23 +90,21 @@ function show_post_types()
         while ($loop->have_posts()):
             $loop->the_post();
             ?>
-		<div class="ws-card" style="background-color: <?php echo show_post_type_bgColor_option(); ?>;">
-		<?php if (has_post_thumbnail()): ?>
-		        <div class="ws-card-img">
-		        <?php the_post_thumbnail('small');?>
-		        </div>
-		        <?php endif;?>
-	<div class="ws-card-content">
-	<h3><a href="<?php the_permalink(get_the_ID());?>"> <?php the_title();?></a></h3>
-
-	<?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
-
-	<a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"> <?php echo show_post_type_readmore_option(); ?></a>
-
-	</div>
-	</div>
-
-							<?php
+				            <div id="ws-main-sec" class="ws-shortcodes ws-cards <?php echo empty($atts['style']) ? show_post_type_style_option() : $atts['style']; ?>">
+							    <div class="ws-card" style="background-color:<?php echo empty($atts['bgcolor']) ? show_post_type_bgColor_option() : $atts['bgcolor']; ?>;">
+				                    <?php if (has_post_thumbnail()): ?>
+				                    <div class="ws-card-img">
+				                    <?php the_post_thumbnail('small');?>
+				                    </div>
+				                    <?php endif;?>
+		                    <div class="ws-card-content">
+		                    <h3><a href="<?php the_permalink(get_the_ID());?>"> <?php the_title();?></a></h3>
+		                    <?php apply_filters('ws_custom_excerpt_length', __(the_excerpt()));?>
+		                    <a class="ws-buttom" href="<?php the_permalink(get_the_ID());?>"> <?php echo show_post_type_readmore_option(); ?></a>
+		                    </div>
+					    </div>
+		            </div>
+											<?php
 
     endwhile;
     endif;
